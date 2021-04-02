@@ -54,7 +54,7 @@ Time_OP=[Fixed_TS_app Nonintrrpt_TS_app Flex_TS_app];
 
 %--------------Electricity Price Signal------------------------%
 
-%Time of user pricing tariff for detials here:L¸tkebohle,   ìSmart   Meter   Upgrade   The   Customer-Led   Transi-tion  to  Time-of-Use,î  
+%Time of user pricing tariff for detials here:L√ºtkebohle,   ‚ÄúSmart   Meter   Upgrade   The   Customer-Led   Transi-tion  to  Time-of-Use,‚Äù  
 %https://www.cru.ie/wp-content/uploads/2018/05/CRU19019-Customer-Led-Transition-to-Time-of-Use.pdf/, 2019
 %Pricing data for the example mdoel is taken
 Off_peak_price=[10.1 10.1 10.1 14.1 10.1 10.1 10.1];
@@ -132,65 +132,7 @@ for a=1:popsize
 end
 %----- Line 112 to 141 setting up the operaton timeslots for ----------%
 %----- "Nonintrruptable Load", Washing machine and Iron
-if lgen<=(Time_OP(1,5)+Time_OP(1,6)) 
-    for a=1:popsize
-        popnew(a,5)=1;
-        if Time_OP(1,6)<=0
-            popnew(a,6)=1;
-        else
-            popnew(a,6)=0;
-        end
-    end
-elseif hours>1
-    for a=1:popsize
-        if app_Sch_GA(hours-1,5)==1
-            popnew(a,5)=1;
-        end
-        if Time_OP(1,5)>0
-            popnew(a,6)=0;
-        end
-        if Time_OP(1,5)<=0
-            popnew(a,5)=0;
-            popnew(a,6)=1;
-        else
-            popnew(a,b)=0;
-        end
-    end
-end
-for a=1:popsize
-    if Time_OP(1,5)>0
-        popnew(a,6)=0;
-    end
-end
-%------- Line 145 to 173------------%
-%shows the 
-if hours>=1
-    for a=1:popsize
-        if C_Fan_St(1,hours)==1
-            popnew(a,1)=1;
-        else
-            popnew(a,1)=0;
-        end
-        if Lamp_St(1,hours)==1
-            popnew(a,2)=1;
-        else
-            popnew(a,2)=0;
-            
-        end
-        if TV_St(1,hours)==1
-            popnew(a,3)=1;
-        else
-            popnew(a,3)=0;
-            
-        end
-        if Oven_St(1,hours)==1
-            popnew(a,4)=1;
-        else
-            popnew(a,4)=0;
-            
-        end
-    end
-end
+
 for a=1:popsize
     for b=1:tbits
         if Time_OP(1,b)<=0
